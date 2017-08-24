@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/p/38d13a7c1b78 -->
+<html><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+  <!-- Start of Baidu Transcode -->
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="MobileOptimized" content="width">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="mobile-agent" content="format=html5;url=http://www.jianshu.com/p/38d13a7c1b78">
+  <!-- End of Baidu Transcode -->
+
+    <meta name="description" content="本文档为微信小程序商城NideShop服务端api的安装部署教程服务端api : https://github.com/tumobi/nideshop微信小程序端 : https://github.com/tumobi/nideshop-mini-program 环境介绍 阿里云ECS Ubuntu 16.04 64 更新系统和安装git、vim、curl 通过nvm安装node.js 安装...">
+
+  <meta name="360-site-verification" content="604a14b53c6b871206001285921e81d8">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=http://www.jianshu.com/p/38d13a7c1b78">
+
+  <!-- Apple -->
+  <meta name="apple-mobile-web-app-title" content="简书">
+
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/15424476">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content="Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城" property="twitter:title">
+  <meta content="本文档为微信小程序商城NideShop服务端api的安装部署教程服务端api : https://github.com/tumobi/nideshop微信小程序端 : https://github.com/tumobi/nideshop-mini-program 环境介绍 阿里云ECS Ubuntu 16.04 64 更新系统和安装git、vim、curl 通过nvm安装node.js 安装nvm nvm安装成功后，关闭当前终端，重新连接验证安装是否成功 看到输出版本信息0.33.2表示安装成功 查看Node.js版本并安装 看到输出版本信息v8.2.1表示安装成功 安装MySQL 5...." property="twitter:description">
+  <meta content="http://www.jianshu.com/p/38d13a7c1b78" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content="Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.jianshu.com/p/38d13a7c1b78">
+  <meta property="og:description" content="本文档为微信小程序商城NideShop服务端api的安装部署教程服务端api : https://github.com/tumobi/nideshop微信小程序端 : https://githu...">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/15424476">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/15424476">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+
+    <title>Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书</title>
+
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="oLjq6Iu1vsOVZ2pOfSUEFGuvsO71STS5Oc3cwEJzn0XDD1xghDbEWPx6B9Y3+cJ1w6EJD+fEUmH/Hd8mAWq/Dg==">
+
+  <link rel="stylesheet" media="all" href="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/web-d4262abc23b8ceb5bda1.css">
+  
+  <link rel="stylesheet" media="all" href="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/entry-3775714750b6fb5281ab.css">
+
+  <link href="http://cdn2.jianshu.io/assets/favicons/favicon-783beb88ed621ceab614de960376ac0c.ico" rel="icon">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/57-47624b2e2161e8eb144462c85db0a5ff.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/72-c00cde7cf98fc49e50cbb3ee1dcd5804.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/76-e8af0bdeaf1ba31e303b1fde8b5e66c4.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/114-f4c78569bbf1977e8382a5fd90c9237a.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/120-cf10c3711dba269522743729efe66bbc.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/152-7bd60457b5f3ecbf1343f0e6241be4f8.png" sizes="152x152">
+<link rel="stylesheet" href="blob:http%3A//www.jianshu.com/58cd9942-e6d5-471b-9059-54a937162501"><link rel="stylesheet" href="blob:http%3A//www.jianshu.com/108d2cc8-1692-4894-a1f6-71def6268c5e"><link rel="stylesheet" href="blob:http%3A//www.jianshu.com/12572798-10a8-4564-b885-1f3f20609ffe"></head>
+
+  <body lang="zh-CN" class="reader-black-font">
+    <!-- 全局顶部导航栏 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="width-limit">
+    <!-- 左上方 Logo -->
+    <a class="logo" href="http://www.jianshu.com/"><img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/logo-58fd04f6f0de908401aa561cda6a0688.png" alt="Logo"></a>
+
+    <!-- 右上角 -->
+      <!-- 未登录显示登录/注册/写文章 -->
+      <a class="btn write-btn" target="_blank" href="http://www.jianshu.com/writer#/">
+        <i class="iconfont ic-write"></i>写文章
+</a>      <a class="btn sign-up" href="http://www.jianshu.com/sign_up">注册</a>
+      <a class="btn log-in" href="http://www.jianshu.com/sign_in">登录</a>
+
+    <!-- 如果用户登录，显示下拉菜单 -->
+
+    <div class="style-mode"><a class="style-mode-btn"><i class="iconfont ic-navigation-mode"></i></a> <div class="popover-modal" style="left: 0px; display: none;"><div class="meta"><i class="iconfont ic-navigation-night"></i><span>夜间模式</span></div> <div class="switch day-night-group"><a class="switch-btn">开</a> <a class="switch-btn active">关</a></div> <hr> <div class="switch font-family-group"><a class="switch-btn font-song">宋体</a> <a class="switch-btn font-hei active">黑体</a></div> <div class="switch"><a class="switch-btn active">简</a> <a class="switch-btn">繁</a></div></div></div>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav">
+            <li class="">
+              <a href="http://www.jianshu.com/">
+                <span class="menu-text">首页</span><i class="iconfont ic-navigation-discover menu-icon"></i>
+</a>            </li>
+            <li class="">
+              <a class="app-download-btn" href="http://www.jianshu.com/apps"><span class="menu-text">下载App</span><i class="iconfont ic-navigation-download menu-icon"></i></a>
+            </li>
+          <li class="search">
+            <form target="_blank" action="http://www.jianshu.com/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+              <input type="text" name="q" id="q" value="" autocomplete="off" placeholder="搜索" class="search-input">
+              <a class="search-btn" href="javascript:void(null)"><i class="iconfont ic-search"></i></a>
+</form>          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+<div class="note">
+  <div class="post">
+    <div class="article">
+        <h1 class="title">Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城</h1>
+
+        <!-- 作者区域 -->
+        <div class="author">
+          <a class="avatar" href="http://www.jianshu.com/u/575d7ece6e59">
+            <img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/13-394c31a9cb492fcb39c27422ca7d2815.jpg" alt="144">
+</a>          <div class="info">
+            <span class="tag">作者</span>
+            <span class="name"><a href="http://www.jianshu.com/u/575d7ece6e59">tumobi</a></span>
+            <!-- 关注用户按钮 -->
+            <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+            <!-- 文章数据信息 -->
+            <div class="meta">
+              <!-- 如果文章更新时间大于发布时间，那么使用 tooltip 显示更新时间 -->
+                <span class="publish-time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="最后编辑于 2017.08.06 22:12">2017.08.06 01:03*</span>
+              <span class="wordage">字数 682</span>
+            <span class="views-count">阅读 434</span><span class="comments-count">评论 0</span><span class="likes-count">喜欢 0</span><span class="rewards-count ">赞赏 1</span></div>
+          </div>
+          <!-- 如果是当前作者，加入编辑按钮 -->
+        </div>
+        <!-- -->
+
+        <!-- 文章内容 -->
+        <div data-note-content="" class="show-content">
+          <blockquote>
+<p>本文档为微信小程序商城NideShop服务端api的安装部署教程<br>
+服务端api : <a href="https://github.com/tumobi/nideshop" target="_blank">https://github.com/tumobi/nideshop</a><br>
+微信小程序端 : <a href="https://github.com/tumobi/nideshop-mini-program" target="_blank">https://github.com/tumobi/nideshop-mini-program</a></p>
+</blockquote>
+<h3>环境介绍</h3>
+<p>阿里云ECS Ubuntu 16.04 64</p>
+<h3>更新系统和安装git、vim、curl</h3>
+<pre class="hljs undefined"><code>apt update -y
+apt upgrade -y
+apt install curl git -y
+</code></pre>
+<h3>通过nvm安装node.js</h3>
+<ul>
+<li>安装nvm</li>
+</ul>
+<pre class="hljs undefined"><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+</code></pre>
+<p>nvm安装成功后，关闭当前终端，重新连接<br>
+验证安装是否成功</p>
+<pre class="hljs undefined"><code>nvm --version
+</code></pre>
+<p>看到输出版本信息0.33.2表示安装成功</p>
+<ul>
+<li>查看Node.js版本并安装</li>
+</ul>
+<pre class="hljs undefined"><code>nvm ls-remote
+nvm install v8.2.1
+node -v
+</code></pre>
+<p>看到输出版本信息v8.2.1表示安装成功</p>
+<h3>安装MySQL 5.7</h3>
+<pre class="hljs undefined"><code>apt  install mysql-server -y
+</code></pre>
+<p>安装过程会要求设置mysql的密码，并记住密码</p>
+<p>验证mysql是否安装成功</p>
+<pre class="hljs undefined"><code>mysql -uroot -p 
+</code></pre>
+<p>回车后输入安装时输入的密码，登录成功后的样子</p>
+<br>
+<div class="image-package">
+<img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/3985656-32da7cea7c096022.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-32da7cea7c096022.png?imageMogr2/auto-orient/strip" alt="登录成功后" style="cursor: zoom-in;"><br><div class="image-caption">登录成功后</div>
+</div>
+<h3>开始运行NideShop</h3>
+<ul>
+<li>下载NideShop的源码</li>
+</ul>
+<pre class="hljs undefined"><code>mkdir /var/www
+cd /var/www
+git clone https://github.com/tumobi/nideshop
+</code></pre>
+<ul>
+<li>全局安装ThinkJS</li>
+</ul>
+<pre class="hljs undefined"><code>npm install thinkjs@2 -g 
+thinkjs --version
+</code></pre>
+<ul>
+<li>安装依赖</li>
+</ul>
+<pre class="hljs undefined"><code>cd /var/www/nideshop
+npm install 
+</code></pre>
+<ul>
+<li>创建数据库并导入数据</li>
+</ul>
+<pre class="hljs undefined"><code> mysql -uroot -p -e "create database nideshop character set utf8mb4"
+ mysql -uroot -p nideshop &lt; /var/www/nideshop/nideshop.sql
+</code></pre>
+<ul>
+<li>修改nideshop的数据库配置db.js</li>
+</ul>
+<pre class="hljs undefined"><code>vim src/common/config/db.js 
+</code></pre>
+<p>修改后</p>
+<br>
+<div class="image-package">
+<img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/3985656-349235a8e773cb88.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-349235a8e773cb88.png?imageMogr2/auto-orient/strip" alt="配置数据库信息" style="cursor: zoom-in;"><br><div class="image-caption">配置数据库信息</div>
+</div>
+<blockquote>
+<p>注意encoding，prefix的值</p>
+</blockquote>
+<p>编译项目</p>
+<pre class="hljs undefined"><code>npm run compile
+</code></pre>
+<p>以生产模式启动</p>
+<pre class="hljs undefined"><code>node www/production.js
+</code></pre>
+<p>打开另一个终端验证是否启动成功</p>
+<pre class="hljs undefined"><code>curl -I http://127.0.0.1:8360/
+</code></pre>
+<p>输出HTTP/1.1 200 OK，则表示成功<br>
+<strong>Ctrl + C停止运行</strong></p>
+<blockquote>
+<p>为防止后面操作出现[Error] Error: Address already in use, port:8360. 的错误，一定要记得Ctrl + C停止运行，并确保curl -I http://127.0.0.1:8360/不能访问</p>
+</blockquote>
+<h3>使用 PM2 管理服务</h3>
+<ul>
+<li>安装配置pm2</li>
+</ul>
+<pre class="hljs undefined"><code>npm install -g pm2
+</code></pre>
+<p>修改项目根目录下的pm2.json为：</p>
+<pre class="hljs undefined"><code>vim pm2.json
+</code></pre>
+<p>修改后的内容如下 ：</p>
+<pre class="hljs undefined"><code>{
+  "apps": [{
+    "name": "nideshop",
+    "script": "www/production.js",
+    "cwd": "/var/www/nideshop",
+    "exec_mode": "cluster",
+    "instances": 1,
+    "max_memory_restart": "256M",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+
+    }
+  }]
+}
+</code></pre>
+<p>如果服务器配置较高，可适当调整max_memory_restart和instances的值</p>
+<ul>
+<li>启动pm2</li>
+</ul>
+<pre class="hljs undefined"><code>pm2 startOrReload pm2.json
+</code></pre>
+<p>成功启动</p>
+<div class="image-package">
+<img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/3985656-d980e3cfea519393.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-d980e3cfea519393.png?imageMogr2/auto-orient/strip" alt="成功启动" style="cursor: zoom-in;"><br><div class="image-caption">成功启动</div>
+</div><br>
+<p>再次验证是否可以访问</p>
+
+<pre class="hljs undefined"><code>curl -I http://127.0.0.1:8360/
+</code></pre>
+<h3>使用 nginx 做反向代理</h3>
+<pre class="hljs undefined"><code>apt install nginx -y
+</code></pre>
+<p>测试本地是否可以正常访问</p>
+<pre class="hljs undefined"><code>curl -I localhost 
+</code></pre>
+<p>修改nginx配置</p>
+<pre class="hljs undefined"><code>cp  /etc/nginx/sites-available/default  /etc/nginx/sites-available/default.bak
+vim /etc/nginx/sites-available/default
+</code></pre>
+<p>修改后的内容</p>
+<pre class="hljs undefined"><code>server {
+    listen 80;
+    server_name www.nideshop.com nideshop.com;  #此处改为你的域名
+    root /var/www/nideshop;
+    set $node_port 8360;
+
+    index index.js index.html index.htm;
+    if ( -f $request_filename/index.html ){
+        rewrite (.*) $1/index.html break;
+    }
+    if ( !-f $request_filename ){
+        rewrite (.*) /index.js;
+    }
+    location = /index.js {
+        proxy_http_version 1.1;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_pass http://127.0.0.1:$node_port$request_uri;
+        proxy_redirect off;
+    }
+    
+    location = /development.js {
+        deny all;
+    }
+
+    location = /testing.js {
+        deny all;
+    }
+
+    location = /production.js {
+        deny all;
+    }
+
+    location ~ /static/ {
+        etag         on;
+        expires      max;
+    }
+}   
+
+</code></pre>
+<ul>
+<li>重新启动nginx并验证nginx是否还可以正常访问</li>
+</ul>
+<pre class="hljs undefined"><code>nginx -t 
+service nginx restart
+curl  http://127.0.0.1/
+</code></pre>
+<p>如果返回的是下图的json数据则表示nginx反向代理配置成功</p>
+<div class="image-package">
+<img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/3985656-ff191d58e075c41c.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-ff191d58e075c41c.png?imageMogr2/auto-orient/strip" alt="nginx转发成功" style="cursor: zoom-in;"><br><div class="image-caption">nginx转发成功</div>
+</div>
+<blockquote>
+<p>注：阿里云默认外网不能访问80/443端口，请更改实例的安全组配置，配置教程：<a href="https://help.aliyun.com/document_detail/25475.html?spm=5176.doc25475.3.3.ZAx4Uo" target="_blank">https://help.aliyun.com/document_detail/25475.html?spm=5176.doc25475.3.3.ZAx4Uo</a></p>
+</blockquote>
+<h3>配置https访问</h3>
+<ul>
+<li>安装certbot</li>
+</ul>
+<pre class="hljs undefined"><code>apt install software-properties-common
+add-apt-repository ppa:certbot/certbot
+apt update -y
+apt install python-certbot-nginx  -y
+certbot --nginx
+</code></pre>
+<ul>
+<li>配置自动更新证书</li>
+</ul>
+<pre class="hljs undefined"><code>certbot renew --dry-run
+</code></pre>
+<blockquote>
+<p>详情文档请查看：<a href="https://certbot.eff.org/#ubuntuxenial-nginx" target="_blank">https://certbot.eff.org/#ubuntuxenial-nginx</a></p>
+</blockquote>
+<ul>
+<li>
+<p>测试浏览器使用https形式访问是否成功</p>
+<br>
+<div class="image-package">
+<img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/3985656-9b0cfb1db7c99c3e.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-9b0cfb1db7c99c3e.png?imageMogr2/auto-orient/strip" alt="配置https访问成功" style="cursor: zoom-in;"><br><div class="image-caption">配置https访问成功</div>
+</div>
+</li>
+</ul>
+<h3>修改NideShop微信小程序客户端的配置</h3>
+<p>微信小程序商城客户端GitHub: <a href="https://github.com/tumobi/nideshop-mini-program" target="_blank">https://github.com/tumobi/nideshop-mini-program</a><br>
+打开文件config/api.js，修改NewApiRootUrl为自己的域名</p>
+<pre class="hljs undefined"><code>var NewApiRootUrl = 'https://www.nideshop.com/api/';
+</code></pre>
+<blockquote>
+<p>注意https和后面的api/不能少</p>
+</blockquote>
+<p>到此部署成功。如有问题请加QQ群：594430617</p>
+
+        </div>
+        <!--  -->
+
+        <div class="show-foot">
+          <a class="notebook" href="http://www.jianshu.com/nb/8258832">
+            <i class="iconfont ic-search-notebook"></i> <span>微信小程序商城</span>
+</a>          <div class="copyright" data-toggle="tooltip" data-html="true" data-original-title="转载请联系作者获得授权，并标注“简书作者”。">
+            © 著作权归作者所有
+          </div>
+          <div class="modal-wrap" data-report-note="">
+            <a id="report-modal">举报文章</a>
+          </div>
+        </div>
+    </div>
+
+    <!-- 文章底部作者信息 -->
+      <div class="follow-detail">
+        <div class="info">
+          <a class="avatar" href="http://www.jianshu.com/u/575d7ece6e59">
+            <img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/13-394c31a9cb492fcb39c27422ca7d2815.jpg" alt="144">
+</a>          <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+          <a class="title" href="http://www.jianshu.com/u/575d7ece6e59">tumobi</a>
+            <i class="iconfont ic-man"></i>
+        <p>写了 6256 字，被 24 人关注，获得了 44 个喜欢</p></div>
+          <div class="signature">专注Laravel、Android、Node.js和微信小程序B2C开源商城开发
+技术方向：Android、Vue.js、Node.js、Laravel、Ubuntu</div>
+      </div>
+
+      <div class="support-author"><p>如果觉得我的文章对您有用，请随意赞赏。您的支持将鼓励我继续创作！</p> <div class="btn btn-pay">赞赏支持</div> <div class="supporter"><ul class="support-list"><li><a target="_blank" href="javascript:void(0)" class="avatar"><img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/wechat-771371d5741b0c32cd805caeb48ad6c0.png"></a></li></ul> <!----></div> <!----> <!----></div>
+
+    <div class="meta-bottom">
+      <div class="like"><div class="btn like-group"><div class="btn-like"><a href="http://www.jianshu.com/sign_in?utm_source=desktop&amp;utm_medium=not-signed-in-like-button"><i class="iconfont ic-like"></i>喜欢</a></div> <div class="modal-wrap"><a>0</a></div></div> <!----></div>
+      <div class="share-group">
+        <a class="share-circle" data-action="weixin-share" data-toggle="tooltip" data-original-title="分享到微信">
+          <i class="iconfont ic-wechat"></i>
+        </a>
+        <a class="share-circle" data-action="weibo-share" data-toggle="tooltip" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/15424476/weibo/image_69d57d6174bd.jpg&#39;, &#39;推荐 tumobi 的文章《Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));" data-original-title="分享到微博">
+          <i class="iconfont ic-weibo"></i>
+        </a>
+          <a class="share-circle" data-toggle="tooltip" href="http://cwb.assets.jianshu.io/notes/images/15424476/weibo/image_69d57d6174bd.jpg" target="_blank" data-original-title="下载长微博图片">
+            <i class="iconfont ic-picture"></i>
+          </a>
+        <a class="share-circle more-share" tabindex="0" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="
+          &lt;ul class=&quot;share-list&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 tumobi 的文章《Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-zone&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 tumobi 的文章《Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-twitter&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-facebook&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-google&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-douban&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        " data-original-title="" title="">更多分享</a>
+      </div>
+    </div>
+    <div><div id="comment-list" class="comment-list"><div><form class="new-comment"><a class="avatar"><img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/avatar_default-78d4d1f68984cd6d4379508dd94b4210.png"></a> <div class="sign-container"><a href="http://www.jianshu.com/sign_in?utm_source=desktop&amp;utm_medium=not-signed-in-comment-form" class="btn btn-sign">登录</a> <span>后发表评论</span></div></form></div> <div id="normal-comment-list" class="normal-comment-list"><div><!----> <div><div class="top"><span>评论</span> <a class="close-btn" style="display: none;">关闭评论</a></div> <div class="no-comment"></div> <div class="text">
+            智慧如你，不想<a href="http://www.jianshu.com/sign_in?utm_source=desktop&amp;utm_medium=not-signed-in-nocomments-text">发表一点想法</a>咩~
+          </div></div> <!----> <div class="comments-placeholder" style="display: none;"><div class="author"><div class="avatar"></div> <div class="info"><div class="name"></div> <div class="meta"></div></div></div> <div class="text"></div> <div class="text animation-delay"></div> <div class="tool-group"><i class="iconfont ic-zan-active"></i><div class="zan"></div> <i class="iconfont ic-list-comments"></i><div class="zan"></div></div></div> </div></div> <!----> <div><!----></div></div></div>
+  </div>
+
+  <div class="side-tool"><ul><li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="回到顶部"><a class="function-button"><i class="iconfont ic-backtop"></i></a></li> <!----> <!----> <li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="分享文章"><a tabindex="0" role="button" data-toggle="popover" data-placement="left" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="&lt;ul class=&#39;share-list&#39;&gt;
+                &lt;li&gt;&lt;a class=&quot;weixin-share&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-weixin&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到微信&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/15424476/weibo/image_69d57d6174bd.jpg&#39;, &#39;推荐 tumobi 的文章《Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-weibo&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到微博&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://cwb.assets.jianshu.io/notes/images/15424476/weibo/image_69d57d6174bd.jpg&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-picture&quot;&gt;&lt;/i&gt;&lt;span&gt;下载长微博图片&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 tumobi 的文章《Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-zone&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 tumobi 的文章《Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-twitter&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-facebook&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-google&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/38d13a7c1b78?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-douban&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;" data-original-title="" title="" class="function-button"><i class="iconfont ic-share"></i></a> <!----></li></ul></div>
+</div>
+<div class="note-bottom">
+  <div><div class="main"><div class="title">被以下专题收入，发现更多相似内容</div> <!----> <div class="include-collection"><!----> <a href="http://www.jianshu.com/c/bc69a7fdfa72?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/屏幕快照_2015-07-31_上午9.09.38.png"><div class="name">Node.js</div></a><a href="http://www.jianshu.com/c/38d96caffb2f?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/android.graphics.Bitmap_5be8d38.jpeg"><div class="name">技术干货</div></a> <!----></div></div> <!----> <!----></div>
+  <div><div class="recommend-note"><div class="meta"><div class="title">
+        推荐阅读
+        <a target="_blank" href="http://www.jianshu.com/" class="more">
+           更多精彩内容<i class="iconfont ic-link"></i></a></div></div> <div class="list"><div class="note"><!----> <a target="_blank" href="http://www.jianshu.com/p/30c121bb5026?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="title">使用ubuntu 16.04一步一步搭建我的PHP、Node.js和Android开发环境</a> <p class="description">一  删除不常用的软件 参考链接：http://blog.csdn.net/terence1212/article/details/52270210 二 升级系统卸载系统默认的软件 如果下载速度慢，可以更换为aliyun软件源，设置方法：依次点击：系统设置 -&gt; 软件和更新 -&gt; Ubuntu软件 -&gt; 下载自 -&gt; 其他站点 -&gt; 选择http://mirrors.aliyun.com/ubuntu 三 安装五笔： 四 美化主题 打开unity-tweak-tool软件进入Theme，修改为Flatabulous在此界面下进入Icons栏，修改为Ultra-flat 参加链接：http...</p> <a target="_blank" href="http://www.jianshu.com/u/575d7ece6e59?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="author"><div class="avatar" style="background-image: url(&quot;http://cdn2.jianshu.io/assets/default_avatar/13-394c31a9cb492fcb39c27422ca7d2815.jpg&quot;);"></div> <span class="name">tumobi</span></a></div><div class="note have-img"><a target="_blank" href="http://www.jianshu.com/p/1019bbb93f2e?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="cover" style="background-image: url(&quot;//upload-images.jianshu.io/upload_images/3985656-ae862448d3f72f48.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240&quot;);"></a> <a target="_blank" href="http://www.jianshu.com/p/1019bbb93f2e?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="title">eweapp：ECShop非官方版微信小程序商城</a> <p class="description">eweapp ECShop非官方版微信小程序商城，基于3.6版本appserver接口，100%兼容原有程序，没有对原有程序代码进行过任何改动。 GitHub https://github.com/tumobi/eweapp 功能列表 首页： 轮播图、商城滚动公告、精品推荐、新品上市、销量排行 分类：商品搜索功能、全部一级二级分类展示 购物车 我的：退出登录功能、用户信息显示、订单统计 商品列表：排序功能、底部加载更多商品 商品详情 登录：用户名或邮箱登录 其它功能正在开发中... 界面预览 最后 喜欢别忘了Star，交流QQ群：490201793</p> <a target="_blank" href="http://www.jianshu.com/u/575d7ece6e59?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="author"><div class="avatar" style="background-image: url(&quot;http://cdn2.jianshu.io/assets/default_avatar/13-394c31a9cb492fcb39c27422ca7d2815.jpg&quot;);"></div> <span class="name">tumobi</span></a></div><div class="note have-img"><a target="_blank" href="http://www.jianshu.com/p/3921e4bb0ea3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="cover" style="background-image: url(&quot;//upload-images.jianshu.io/upload_images/1502721-05b6a0fe6e2a5b80.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240&quot;);"></a> <a target="_blank" href="http://www.jianshu.com/p/3921e4bb0ea3?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="title">【真实故事】我是怎么被广西传销组织一步步洗脑的</a> <p class="description">    这是一个在我心里隐藏了七年的真实故事，之所以隐藏，是因为它本身算不得一件光彩的事，“被人骗”，又充当“骗子”去骗人，尽管那是一种自认为善意的谎言，导致实际意义上形成的“骗局”。依然让我在之后几年里不敢正视这段经历。今天，我把这一段经历公之于众，是为了让更多人明白，世上绝对不会存在天上掉馅饼的好事。     1、朋友的邀请     那是2010年的6月，我正在筹划着暑期到外地打工的事。     有一天晚上，高中时的一个同学X在QQ上给我发了一个消息，“在干嘛呢？大学生！”     X高中毕业之后，没有上大学，听说这两年一直在上海打工。我们平时也很少联系，她主动给我发QQ，让我很意外...</p> <a target="_blank" href="http://www.jianshu.com/u/45dee08bdf44?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="author"><div class="avatar" style="background-image: url(&quot;http://upload.jianshu.io/users/upload_avatars/1502721/b52734d099a8&quot;);"></div> <span class="name">刘乙了</span></a></div><div class="note have-img"><a target="_blank" href="http://www.jianshu.com/p/f3695b6110e7?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="cover" style="background-image: url(&quot;//upload-images.jianshu.io/upload_images/1152320-239c2cffbd00555a.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240&quot;);"></a> <a target="_blank" href="http://www.jianshu.com/p/f3695b6110e7?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="title">世界正在偷偷奖励会写作的人</a> <p class="description">01 前两天和一个朋友聊天，谈到未来就业走势，她说，未来社会有两种能力很重要，一个是演讲能力，一个是写作能力。因为这是一个你不发声就不会有人知道你的存在的时代，而让别人知道你的才能的方法无非就两个，一是说出来，二是写出来。 我之前从没有把演讲、写作与经济收益联系起来考虑过，但却觉得朋友说的有几分道理。先介绍一下我的朋友吧，同为90后，已经毕业三年的她早在一年前就已经月收入过万，目前正向着2万的大关迈进。她只是普通的本科毕业，朝九晚五地工作一年多后开始辞职加入了当时微商的大潮，卖现在很流行的养生食品。接下来便和所有的微商模式一样，开始招代理，扩大自己的朋友圈…… 并不是每一个微商都可以在一...</p> <a target="_blank" href="http://www.jianshu.com/u/450931f531c4?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="author"><div class="avatar" style="background-image: url(&quot;http://upload.jianshu.io/users/upload_avatars/1152320/8b5f7899-a522-46da-a05b-9a86e295282e.jpg&quot;);"></div> <span class="name">伍月小姐</span></a></div><div class="note have-img"><a target="_blank" href="http://www.jianshu.com/p/ce715c01a604?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="cover" style="background-image: url(&quot;//upload-images.jianshu.io/upload_images/35363-30e0da4ad7ff3968.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240&quot;);"></a> <a target="_blank" href="http://www.jianshu.com/p/ce715c01a604?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="title">地球上最好看的100部电影（下）</a> <p class="description">（前面50部，请看前篇：地球上最好看的100部电影 - 上） 最近一段时间，地球也进入了信息文明的初级阶段。网上可下载的电影也很多，可是老电影却很少有人推荐。 选择100部电影对我来说，还是太困难了，你想，连《毕业生》《惊魂记》还有你们最喜欢的《大话西游》都没进入啊。 我曾经环游世界，每到一个城市，就能嗅到最近的电影院的味道，阅片无数。 所以这样精挑细选的好片，你值得拥有。 50 陆军野战医院 MASH(1970) 告诉我们不管出于什么环境，马天尼里面一定要加橄榄。这部著名的反战影片让人从头笑到尾，直播"红唇"的幽会，牙医的葬礼搞成像“最后的晚餐”......罗伯特·奥特曼从此一炮而红。...</p> <a target="_blank" href="http://www.jianshu.com/u/ae8a590a2c9f?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="author"><div class="avatar" style="background-image: url(&quot;http://upload.jianshu.io/users/upload_avatars/35363/aa084b453e07&quot;);"></div> <span class="name">Graceland</span></a></div></div></div> <div class="sign-and-download-bind"><a href="http://www.jianshu.com/sign_in?utm_source=desktop&amp;utm_medium=note-bottom-bind" class="btn"><div class="title"><i class="iconfont ic-user"></i>
+        登录/注册
+      </div> <div class="subtitle">
+        为你个性化推荐内容
+      </div></a> <a href="http://www.jianshu.com/apps/download?utm_source=desktop&amp;utm_medium=click-note-bottom-bind" class="btn btn-popover"><div class="title"><i class="iconfont ic-qrcode"></i>
+        下载简书App
+      </div> <div class="subtitle">
+        随时随地发现和创作内容
+      </div> <div class="qr-box"><div class="qrcode"></div> <div class="arrow"></div></div></a></div></div>
+</div>
+
+    <script src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/push.js"></script><script src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/hm.js"></script><script async="" src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/analytics.js"></script><script type="application/json" data-name="page-data">{"user_signed_in":false,"locale":"zh-CN","os":"windows","read_mode":"day","read_font":"font2","note_show":{"is_author":false,"is_following_author":false,"is_liked_note":false,"uuid":"d712e5c7-403c-46aa-b1da-ef2af9f1bb32"},"note":{"id":15424476,"slug":"38d13a7c1b78","user_id":3985656,"notebook_id":8258832,"commentable":true,"likes_count":0,"views_count":434,"public_wordage":682,"comments_count":0,"total_rewards_count":1,"is_author":false,"author":{"nickname":"tumobi","total_wordage":6256,"followers_count":24,"total_likes_count":44}}}</script>
+    
+    <script src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/babel-polyfill-da7da01077566612ec77.js"></script>
+    <script src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/web-base-0ef55f79e1c2b8eee2bc.js"></script>
+<script src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/web-d4262abc23b8ceb5bda1.js"></script>
+    
+    <script src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/entry-3775714750b6fb5281ab.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35169517-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?0c0e9d9b1e7d617b3e6842e85b9fb068";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+  
+
+<!----><!----><div class="sogoutip" style="z-index: 2147483645; visibility: hidden; display: none;"></div><div class="sogoubottom" id="sougou_bottom" style="display: none;"></div><div id="ext_stophi" style="z-index: 2147483647;"><div class="extnoticebg"></div><div class="extnotice"><h2>关闭提示 <a href="http://www.jianshu.com/p/38d13a7c1b78#" title="关闭提示" id="closenotice" class="closenotice">关闭</a></h2><p id="sogouconfirmtxt"></p>  <a id="sogouconfirm" href="http://www.jianshu.com/p/38d13a7c1b78#" class="extconfirm">确 认</a> <a id="sogoucancel" href="http://www.jianshu.com/p/38d13a7c1b78#" class="extconfirm">取 消</a></div></div><div id="ext_overlay" class="ext_overlayBG" style="display: none; z-index: 2147483646;"></div><iframe class="sogou_sugg_feedbackquan" frameborder="0" scrolling="no" src="./Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城 - 简书_files/yun6.html" style="border: none; display: none; height: 84px; width: 100%; z-index: 2147483645; background: transparent;"></iframe></body></html>

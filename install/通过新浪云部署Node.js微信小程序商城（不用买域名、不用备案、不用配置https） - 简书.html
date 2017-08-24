@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/p/78a0f5f424e1 -->
+<html><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+  <!-- Start of Baidu Transcode -->
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta name="applicable-device" content="pc,mobile">
+  <meta name="MobileOptimized" content="width">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="mobile-agent" content="format=html5;url=http://www.jianshu.com/p/78a0f5f424e1">
+  <!-- End of Baidu Transcode -->
+
+    <meta name="description" content="本文档为微信小程序商城NideShop项目的安装部署教程(GitHub)，欢迎star 本项目需要配合微信小程序端使用，GitHub: https://github.com/tumobi/nideshop-mini-program 一、购买新浪云SAE 为什么选择SAE？免费二级域名和支持https访问，不用备案，可用做微信小程序服务器。 SAE推荐链接：http://sae.sina.co...">
+
+  <meta name="360-site-verification" content="604a14b53c6b871206001285921e81d8">
+  <meta property="wb:webmaster" content="294ec9de89e7fadb">
+  <meta property="qc:admins" content="104102651453316562112116375">
+  <meta property="qc:admins" content="11635613706305617">
+  <meta property="qc:admins" content="1163561616621163056375">
+  <meta name="google-site-verification" content="cV4-qkUJZR6gmFeajx_UyPe47GW9vY6cnCrYtCHYNh4">
+  <meta name="google-site-verification" content="HF7lfF8YEGs1qtCE-kPml8Z469e2RHhGajy6JPVy5XI">
+  <meta http-equiv="mobile-agent" content="format=html5; url=http://www.jianshu.com/p/78a0f5f424e1">
+
+  <!-- Apple -->
+  <meta name="apple-mobile-web-app-title" content="简书">
+
+    <!--  Meta for Smart App Banner -->
+  <meta name="apple-itunes-app" content="app-id=888237539, app-argument=jianshu://notes/14603952">
+  <!-- End -->
+
+  <!--  Meta for Twitter Card -->
+  <meta content="summary" property="twitter:card">
+  <meta content="@jianshucom" property="twitter:site">
+  <meta content="通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）" property="twitter:title">
+  <meta content="本文档为微信小程序商城NideShop项目的安装部署教程(GitHub)，欢迎star 本项目需要配合微信小程序端使用，GitHub: https://github.com/tumobi/nideshop-mini-program 一、购买新浪云SAE 为什么选择SAE？免费二级域名和支持https访问，不用备案，可用做微信小程序服务器。 SAE推荐链接：http://sae.sina.com.cn/ 选择对应的部署环境自定义 -&gt; 开发言语：自定义 -&gt; 运行环境：云容器 -&gt; 语言版本：自定义 -&gt; 部署方式：手工部署 -&gt; 环境配置：选择第一项（测试选最低配置即可） -&gt; 实例个数..." property="twitter:description">
+  <meta content="http://www.jianshu.com/p/78a0f5f424e1" property="twitter:url">
+  <!-- End -->
+
+  <!--  Meta for OpenGraph -->
+  <meta property="fb:app_id" content="865829053512461">
+  <meta property="og:site_name" content="简书">
+  <meta property="og:title" content="通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="http://www.jianshu.com/p/78a0f5f424e1">
+  <meta property="og:description" content="本文档为微信小程序商城NideShop项目的安装部署教程(GitHub)，欢迎star 本项目需要配合微信小程序端使用，GitHub: https://github.com/tumobi/nid...">
+  <!-- End -->
+
+  <!--  Meta for Facebook Applinks -->
+  <meta property="al:ios:url" content="jianshu://notes/14603952">
+  <meta property="al:ios:app_store_id" content="888237539">
+  <meta property="al:ios:app_name" content="简书">
+
+  <meta property="al:android:url" content="jianshu://notes/14603952">
+  <meta property="al:android:package" content="com.jianshu.haruki">
+  <meta property="al:android:app_name" content="简书">
+  <!-- End -->
+
+
+    <title>通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书</title>
+
+  <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="R2HvgAyqAJ+hBehoVUZBO7YRqL8KpQrMyJ6H8j+tlvEk1lkIAyl6BMgYhfAfmodaHh8RXhgobBQOToQUfLS2ug==">
+
+  <link rel="stylesheet" media="all" href="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/web-d4262abc23b8ceb5bda1.css">
+  
+  <link rel="stylesheet" media="all" href="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/entry-3775714750b6fb5281ab.css">
+
+  <link href="http://cdn2.jianshu.io/assets/favicons/favicon-783beb88ed621ceab614de960376ac0c.ico" rel="icon">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/57-47624b2e2161e8eb144462c85db0a5ff.png" sizes="57x57">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/72-c00cde7cf98fc49e50cbb3ee1dcd5804.png" sizes="72x72">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/76-e8af0bdeaf1ba31e303b1fde8b5e66c4.png" sizes="76x76">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/114-f4c78569bbf1977e8382a5fd90c9237a.png" sizes="114x114">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/120-cf10c3711dba269522743729efe66bbc.png" sizes="120x120">
+      <link rel="apple-touch-icon-precomposed" href="http://cdn2.jianshu.io/assets/apple-touch-icons/152-7bd60457b5f3ecbf1343f0e6241be4f8.png" sizes="152x152">
+<link rel="stylesheet" href="blob:http%3A//www.jianshu.com/40ceace7-dd35-46e2-9a62-a69a625c1936"><link rel="stylesheet" href="blob:http%3A//www.jianshu.com/eae416d5-c4c6-4a02-8c20-a68e5556587f"><link rel="stylesheet" href="blob:http%3A//www.jianshu.com/93a8d1fa-6fcd-4be1-874a-9e9dfb6cc773"></head>
+
+  <body lang="zh-CN" class="reader-black-font">
+    <!-- 全局顶部导航栏 -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="width-limit">
+    <!-- 左上方 Logo -->
+    <a class="logo" href="http://www.jianshu.com/"><img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/logo-58fd04f6f0de908401aa561cda6a0688.png" alt="Logo"></a>
+
+    <!-- 右上角 -->
+      <!-- 未登录显示登录/注册/写文章 -->
+      <a class="btn write-btn" target="_blank" href="http://www.jianshu.com/writer#/">
+        <i class="iconfont ic-write"></i>写文章
+</a>      <a class="btn sign-up" href="http://www.jianshu.com/sign_up">注册</a>
+      <a class="btn log-in" href="http://www.jianshu.com/sign_in">登录</a>
+
+    <!-- 如果用户登录，显示下拉菜单 -->
+
+    <div class="style-mode"><a class="style-mode-btn"><i class="iconfont ic-navigation-mode"></i></a> <div class="popover-modal" style="left: 0px; display: none;"><div class="meta"><i class="iconfont ic-navigation-night"></i><span>夜间模式</span></div> <div class="switch day-night-group"><a class="switch-btn">开</a> <a class="switch-btn active">关</a></div> <hr> <div class="switch font-family-group"><a class="switch-btn font-song">宋体</a> <a class="switch-btn font-hei active">黑体</a></div> <div class="switch"><a class="switch-btn active">简</a> <a class="switch-btn">繁</a></div></div></div>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="nav navbar-nav">
+            <li class="">
+              <a href="http://www.jianshu.com/">
+                <span class="menu-text">首页</span><i class="iconfont ic-navigation-discover menu-icon"></i>
+</a>            </li>
+            <li class="">
+              <a class="app-download-btn" href="http://www.jianshu.com/apps"><span class="menu-text">下载App</span><i class="iconfont ic-navigation-download menu-icon"></i></a>
+            </li>
+          <li class="search">
+            <form target="_blank" action="http://www.jianshu.com/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+              <input type="text" name="q" id="q" value="" autocomplete="off" placeholder="搜索" class="search-input">
+              <a class="search-btn" href="javascript:void(null)"><i class="iconfont ic-search"></i></a>
+</form>          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+    
+<div class="note">
+  <div class="post">
+    <div class="article">
+        <h1 class="title">通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）</h1>
+
+        <!-- 作者区域 -->
+        <div class="author">
+          <a class="avatar" href="http://www.jianshu.com/u/575d7ece6e59">
+            <img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/13-394c31a9cb492fcb39c27422ca7d2815.jpg" alt="144">
+</a>          <div class="info">
+            <span class="tag">作者</span>
+            <span class="name"><a href="http://www.jianshu.com/u/575d7ece6e59">tumobi</a></span>
+            <!-- 关注用户按钮 -->
+            <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+            <!-- 文章数据信息 -->
+            <div class="meta">
+              <!-- 如果文章更新时间大于发布时间，那么使用 tooltip 显示更新时间 -->
+                <span class="publish-time" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="最后编辑于 2017.08.06 14:05">2017.07.15 14:26*</span>
+              <span class="wordage">字数 736</span>
+            <span class="views-count">阅读 1552</span><span class="comments-count">评论 0</span><span class="likes-count">喜欢 12</span></div>
+          </div>
+          <!-- 如果是当前作者，加入编辑按钮 -->
+        </div>
+        <!-- -->
+
+        <!-- 文章内容 -->
+        <div data-note-content="" class="show-content">
+          <p><strong>本文档为微信小程序商城NideShop项目的安装部署教程(<a href="https://github.com/tumobi/nideshop" target="_blank">GitHub</a>)，欢迎star</strong></p>
+<p><strong>本项目需要配合微信小程序端使用，GitHub: <a href="https://github.com/tumobi/nideshop-mini-program" target="_blank">https://github.com/tumobi/nideshop-mini-program</a></strong></p>
+<h3>一、购买新浪云SAE</h3>
+<ul>
+<li>为什么选择SAE？免费二级域名和支持https访问，不用备案，可用做微信小程序服务器。</li>
+<li>SAE推荐链接：<a href="http://t.cn/RqUxRgi" target="_blank">http://sae.sina.com.cn/</a>
+</li>
+<li>选择对应的部署环境<br>
+自定义 -&gt; 开发言语：自定义 -&gt; 运行环境：云容器 -&gt; 语言版本：自定义 -&gt; 部署方式：手工部署 -&gt; 环境配置：选择第一项（测试选最低配置即可） -&gt; 实例个数：1（测试用选择1个即可） -&gt; 二级域名：填写你的域名（这里为：tumobi.applinzi.com） -&gt; 应用名称：填写你的名称（tumobi）</li>
+</ul>
+<blockquote>
+<p>文中出现tumobi.applinzi.com的地方，请替换为你配置的二级域名</p>
+</blockquote>
+<div class="image-package">
+<img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/3985656-634a56e06b3b77f7.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-634a56e06b3b77f7.png?imageMogr2/auto-orient/strip" alt="选择部署环境" style="cursor: zoom-in;"><br><div class="image-caption">选择部署环境</div>
+</div>
+<h3>二、通过SSH连接云容器</h3>
+<p>windows下的配置教程：<a href="http://www.sinacloud.com/home/index/faq_detail/doc_id/173.html" target="_blank">http://www.sinacloud.com/home/index/faq_detail/doc_id/173.html</a></p>
+<h3>三、安装配置nginx</h3>
+<pre class="hljs undefined"><code>apt update -y
+apt upgrade -y
+apt install nginx curl vim -y
+service nginx start 
+curl localhost
+</code></pre>
+<p>此时发现在外网并不能访问<a href="http://tumobi.applinzi.com/" target="_blank">http://tumobi.applinzi.com/</a>，错误返回<br>
+502 Bad Gateway<br>
+这个错误官方文档有说明：<a href="http://www.sinacloud.com/doc/sae/docker/vm-getting-started.html" target="_blank">http://www.sinacloud.com/doc/sae/docker/vm-getting-started.html</a></p>
+<p>解决方法：更改nginx默认监听的端口80为5050，并重新启动nginx</p>
+<pre class="hljs undefined"><code>vim /etc/nginx/sites-available/default
+nginx -t
+service nginx restart
+</code></pre>
+<div class="image-package">
+<img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/3985656-fde98309d0b01249.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-fde98309d0b01249.png?imageMogr2/auto-orient/strip" alt="此处输入图片的描述" style="cursor: zoom-in;"><br><div class="image-caption">此处输入图片的描述</div>
+</div>
+<p>再次访问 <a href="http://tumobi.applinzi.com/" target="_blank">http://tumobi.applinzi.com/</a>，成功返回<br>
+Welcome to nginx!</p>
+<h3>四、通过nvm安装node.js</h3>
+<ul>
+<li>安装nvm<br>
+<a href="https://github.com/creationix/nvm" target="_blank">https://github.com/creationix/nvm</a>
+</li>
+</ul>
+<pre class="hljs undefined"><code>curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+</code></pre>
+<p>nvm安装成功后，关闭当前终端，重新连接</p>
+<ul>
+<li>查看最新版本的Node.js并安装</li>
+</ul>
+<pre class="hljs undefined"><code>nvm ls-remote
+NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node nvm install v8.1.4
+node -v
+</code></pre>
+<h3>五、配置共享型MySQL并导入数据</h3>
+<p>创建MySQL成功后，选择管理操作，进入到phpmyadmin页面，选项导入<br>
+选择nideshop项目根目录下的nideshop.sql文件</p>
+<h3>六、本地部署NideShop</h3>
+<p>下载NideShop的源码</p>
+<pre class="hljs undefined"><code>apt install git -y
+cd /var/www
+git clone https://github.com/tumobi/nideshop
+</code></pre>
+<p>安装ThinkJS</p>
+<pre class="hljs undefined"><code>npm install thinkjs@2 -g --registry=https://registry.npm.taobao.org --verbose
+thinkjs --version
+</code></pre>
+<p>安装依赖</p>
+<pre class="hljs undefined"><code>cd /var/www/nideshop
+npm install --registry=https://registry.npm.taobao.org --verbose
+</code></pre>
+<p>配置mysql</p>
+<pre class="hljs undefined"><code>vim src/common/config/db.js 
+</code></pre>
+<p>修改后：</p>
+<br>
+<div class="image-package">
+<img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/3985656-272ca30f2c333048.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-272ca30f2c333048.png?imageMogr2/auto-orient/strip" alt="QQ截图20170715125320.png" style="cursor: zoom-in;"><br><div class="image-caption">QQ截图20170715125320.png</div>
+</div>
+<p>启动：</p>
+<pre class="hljs undefined"><code>npm start
+curl localhost:8360
+</code></pre>
+<p>Node.js连接MySQL参考文档：<a href="http://www.sinacloud.com/doc/sae/docker/howto-use-mysql.html#nodejs" target="_blank">http://www.sinacloud.com/doc/sae/docker/howto-use-mysql.html#nodejs</a></p>
+<h3>七 通过nginx、pm2进行线上部署</h3>
+<ul>
+<li>编译项目</li>
+</ul>
+<pre class="hljs undefined"><code>npm run compile
+</code></pre>
+<ul>
+<li>修改nginx配置<br>
+/etc/nginx/sites-available/default修改后</li>
+</ul>
+<pre class="hljs undefined"><code>server {
+    listen 5050 default_server;
+    server_name tumobi.applinzi.com;    #注意：修改成你的域名
+    root /var/www/nideshop;
+    set $node_port 8360;
+
+    index index.js index.html index.htm;
+    if ( -f $request_filename/index.html ){
+        rewrite (.*) $1/index.html break;
+    }
+    if ( !-f $request_filename ){
+        rewrite (.*) /index.js;
+    }
+    location = /index.js {
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-NginX-Proxy true;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_pass http://127.0.0.1:$node_port$request_uri;
+        proxy_redirect off;
+    }
+    location = /production.js {
+        deny all;
+    }
+
+    location = /testing.js {
+        deny all;
+    }
+    location ~ /static/ {
+        etag         on;
+        expires      max;
+    }
+}
+</code></pre>
+<ul>
+<li>测试通过nginx访问<br>
+启动服务</li>
+</ul>
+<pre class="hljs undefined"><code>node www/production.js
+</code></pre>
+<p>外网通过浏览器访问: <a href="http://tumobi.applinzi.com/" target="_blank">http://tumobi.applinzi.com/</a></p>
+<ul>
+<li>安装配置pm2</li>
+</ul>
+<pre class="hljs undefined"><code>npm install -g pm2
+</code></pre>
+<p>修改项目根目录下的pm2.json为：</p>
+<pre class="hljs undefined"><code>{
+  "apps": [{
+    "name": "nideshop",
+    "script": "www/production.js",
+    "cwd": "/var/www/nideshop",
+    "exec_mode": "cluster",
+    "instances": 1,
+    "max_memory_restart": "256M",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+
+    }
+  }]
+}
+</code></pre>
+<p>启动pm2</p>
+<pre class="hljs undefined"><code>pm2 startOrReload pm2.json
+</code></pre>
+<ul>
+<li>参考文档：ThinkJS线上部署文档：<a href="https://thinkjs.org/zh-cn/doc/2.2/deploy.html" target="_blank">https://thinkjs.org/zh-cn/doc/2.2/deploy.html</a>
+</li>
+</ul>
+<h3>八 修改NideShop微信小程序的配置</h3>
+<p>微信小程序商城GitHub: <a href="https://github.com/tumobi/nideshop-mini-program" target="_blank">https://github.com/tumobi/nideshop-mini-program</a><br>
+打开文件config/api.js，修改NewApiRootUrl为自己的域名，注册是https和后面的api/不能少</p>
+<pre class="hljs undefined"><code>var NewApiRootUrl = 'https://tumobi.applinzi.com/api/';
+</code></pre>
+<h3>九 微信小程序端运行效果图</h3>
+<div class="image-package">
+<img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/3985656-c543b937ac6e79bb.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-c543b937ac6e79bb.png?imageMogr2/auto-orient/strip" alt="首页" style="cursor: zoom-in;"><br><div class="image-caption">首页</div>
+</div>
+<div class="image-package">
+<img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/3985656-bd606aac3b5491c2.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-bd606aac3b5491c2.png?imageMogr2/auto-orient/strip" alt="专题" style="cursor: zoom-in;"><br><div class="image-caption">专题</div>
+</div>
+<div class="image-package">
+<img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/3985656-fa9565158376d439.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-fa9565158376d439.png?imageMogr2/auto-orient/strip" alt="分类" style="cursor: zoom-in;"><br><div class="image-caption">分类</div>
+</div>
+<div class="image-package">
+<img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/3985656-788b7fd2c4a558d0.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-788b7fd2c4a558d0.png?imageMogr2/auto-orient/strip" alt="商品列表" style="cursor: zoom-in;"><br><div class="image-caption">商品列表</div>
+</div>
+<div class="image-package">
+<img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/3985656-99a6e0a57778d85f.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-99a6e0a57778d85f.png?imageMogr2/auto-orient/strip" alt="商品详情" style="cursor: zoom-in;"><br><div class="image-caption">商品详情</div>
+</div>
+<div class="image-package">
+<img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/3985656-60ff2307d81f6bb2.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-60ff2307d81f6bb2.png?imageMogr2/auto-orient/strip" alt="购物车" style="cursor: zoom-in;"><br><div class="image-caption">购物车</div>
+</div>
+<div class="image-package">
+<img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/3985656-dff837e6b2ec87b3.png" data-original-src="http://upload-images.jianshu.io/upload_images/3985656-dff837e6b2ec87b3.png?imageMogr2/auto-orient/strip" alt="订单中心" style="cursor: zoom-in;"><br><div class="image-caption">订单中心</div>
+</div>
+<blockquote>
+<p>如使用的是阿里云服务器，请参考另一篇文章：<a href="http://www.jianshu.com/p/38d13a7c1b78" target="_blank">Ubuntu 16.04 下部署Node.js+MySQL微信小程序商城</a></p>
+</blockquote>
+
+        </div>
+        <!--  -->
+
+        <div class="show-foot">
+          <a class="notebook" href="http://www.jianshu.com/nb/8258832">
+            <i class="iconfont ic-search-notebook"></i> <span>微信小程序商城</span>
+</a>          <div class="copyright" data-toggle="tooltip" data-html="true" data-original-title="转载请联系作者获得授权，并标注“简书作者”。">
+            © 著作权归作者所有
+          </div>
+          <div class="modal-wrap" data-report-note="">
+            <a id="report-modal">举报文章</a>
+          </div>
+        </div>
+    </div>
+
+    <!-- 文章底部作者信息 -->
+      <div class="follow-detail">
+        <div class="info">
+          <a class="avatar" href="http://www.jianshu.com/u/575d7ece6e59">
+            <img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/13-394c31a9cb492fcb39c27422ca7d2815.jpg" alt="144">
+</a>          <a class="btn btn-success follow"><i class="iconfont ic-follow"></i><span>关注</span></a>
+          <a class="title" href="http://www.jianshu.com/u/575d7ece6e59">tumobi</a>
+            <i class="iconfont ic-man"></i>
+        <p>写了 6256 字，被 24 人关注，获得了 44 个喜欢</p></div>
+          <div class="signature">专注Laravel、Android、Node.js和微信小程序B2C开源商城开发
+技术方向：Android、Vue.js、Node.js、Laravel、Ubuntu</div>
+      </div>
+
+      <div class="support-author"><p>如果觉得我的文章对您有用，请随意赞赏。您的支持将鼓励我继续创作！</p> <div class="btn btn-pay">赞赏支持</div> <!----> <!----> <!----></div>
+
+    <div class="meta-bottom">
+      <div class="like"><div class="btn like-group"><div class="btn-like"><a href="http://www.jianshu.com/sign_in?utm_source=desktop&amp;utm_medium=not-signed-in-like-button"><i class="iconfont ic-like"></i>喜欢</a></div> <div class="modal-wrap"><a>12</a></div></div> <!----></div>
+      <div class="share-group">
+        <a class="share-circle" data-action="weixin-share" data-toggle="tooltip" data-original-title="分享到微信">
+          <i class="iconfont ic-wechat"></i>
+        </a>
+        <a class="share-circle" data-action="weibo-share" data-toggle="tooltip" href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/14603952/weibo/image_d56671150d7b.jpg&#39;, &#39;推荐 tumobi 的文章《通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));" data-original-title="分享到微博">
+          <i class="iconfont ic-weibo"></i>
+        </a>
+          <a class="share-circle" data-toggle="tooltip" href="http://cwb.assets.jianshu.io/notes/images/14603952/weibo/image_d56671150d7b.jpg" target="_blank" data-original-title="下载长微博图片">
+            <i class="iconfont ic-picture"></i>
+          </a>
+        <a class="share-circle more-share" tabindex="0" data-toggle="popover" data-placement="top" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="
+          &lt;ul class=&quot;share-list&quot;&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 tumobi 的文章《通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-zone&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 tumobi 的文章《通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-twitter&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-facebook&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-google&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-douban&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        " data-original-title="" title="">更多分享</a>
+      </div>
+    </div>
+    <div><div id="comment-list" class="comment-list"><div><form class="new-comment"><a class="avatar"><img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/avatar_default-78d4d1f68984cd6d4379508dd94b4210.png"></a> <div class="sign-container"><a href="http://www.jianshu.com/sign_in?utm_source=desktop&amp;utm_medium=not-signed-in-comment-form" class="btn btn-sign">登录</a> <span>后发表评论</span></div></form></div> <div id="normal-comment-list" class="normal-comment-list"><div><!----> <div><div class="top"><span>评论</span> <a class="close-btn" style="display: none;">关闭评论</a></div> <div class="no-comment"></div> <div class="text">
+            智慧如你，不想<a href="http://www.jianshu.com/sign_in?utm_source=desktop&amp;utm_medium=not-signed-in-nocomments-text">发表一点想法</a>咩~
+          </div></div> <!----> <div class="comments-placeholder" style="display: none;"><div class="author"><div class="avatar"></div> <div class="info"><div class="name"></div> <div class="meta"></div></div></div> <div class="text"></div> <div class="text animation-delay"></div> <div class="tool-group"><i class="iconfont ic-zan-active"></i><div class="zan"></div> <i class="iconfont ic-list-comments"></i><div class="zan"></div></div></div> </div></div> <!----> <div><!----></div></div></div>
+  </div>
+
+  <div class="side-tool"><ul><li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="回到顶部"><a class="function-button"><i class="iconfont ic-backtop"></i></a></li> <!----> <!----> <li data-placement="left" data-toggle="tooltip" data-container="body" data-original-title="分享文章"><a tabindex="0" role="button" data-toggle="popover" data-placement="left" data-html="true" data-trigger="focus" href="javascript:void(0);" data-content="&lt;ul class=&#39;share-list&#39;&gt;
+                &lt;li&gt;&lt;a class=&quot;weixin-share&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-weixin&quot;&gt;&lt;/i&gt;&lt;span&gt;分享到微信&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f=&#39;http://v.t.sina.com.cn/share/share.php?appkey=1881139527&#39;,u=z||d.location,p=[&#39;&amp;url=&#39;,e(u),&#39;&amp;title=&#39;,e(t||d.title),&#39;&amp;source=&#39;,e(r),&#39;&amp;sourceUrl=&#39;,e(l),&#39;&amp;content=&#39;,c||&#39;gb2312&#39;,&#39;&amp;pic=&#39;,e(p||&#39;&#39;)].join(&#39;&#39;);function%20a(){if(!window.open([f,p].join(&#39;&#39;),&#39;mb&#39;,[&#39;toolbar=0,status=0,resizable=1,width=440,height=430,left=&#39;,(s.width-440)/2,&#39;,top=&#39;,(s.height-430)/2].join(&#39;&#39;)))u.href=[f,p].join(&#39;&#39;);};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,&#39;&#39;,&#39;&#39;,&#39;http://cwb.assets.jianshu.io/notes/images/14603952/weibo/image_d56671150d7b.jpg&#39;, &#39;推荐 tumobi 的文章《通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）》（ 分享自 @简书 ）&#39;,&#39;http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=weibo&#39;,&#39;页面编码gb2312|utf-8默认gb2312&#39;));&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-weibo&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到微博&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;http://cwb.assets.jianshu.io/notes/images/14603952/weibo/image_d56671150d7b.jpg&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;social-icon-sprite social-icon-picture&quot;&gt;&lt;/i&gt;&lt;span&gt;下载长微博图片&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&#39;+e(&#39;http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=qzone&#39;)+&#39;&amp;title=&#39;+e(&#39;推荐 tumobi 的文章《通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）》&#39;),x=function(){if(!window.open(r,&#39;qzone&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-zone&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到QQ空间&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://twitter.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=twitter&#39;)+&#39;&amp;text=&#39;+e(&#39;推荐 tumobi 的文章《通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）》（ 分享自 @jianshucom ）&#39;)+&#39;&amp;related=&#39;+e(&#39;jianshucom&#39;),x=function(){if(!window.open(r,&#39;twitter&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=600,height=600&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-twitter&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Twitter&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://www.facebook.com/dialog/share?app_id=483126645039390&amp;display=popup&amp;href=http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=facebook&#39;,x=function(){if(!window.open(r,&#39;facebook&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-facebook&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Facebook&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,r=&#39;https://plus.google.com/share?url=&#39;+e(&#39;http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=google_plus&#39;),x=function(){if(!window.open(r,&#39;google_plus&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})();&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-google&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到Google+&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href=&quot;javascript:void(function(){var d=document,e=encodeURIComponent,s1=window.getSelection,s2=d.getSelection,s3=d.selection,s=s1?s1():s2?s2():s3?s3.createRange().text:&#39;&#39;,r=&#39;http://www.douban.com/recommend/?url=&#39;+e(&#39;http://www.jianshu.com/p/78a0f5f424e1?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=reader_share&amp;utm_source=douban&#39;)+&#39;&amp;title=&#39;+e(&#39;通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https）&#39;)+&#39;&amp;sel=&#39;+e(s)+&#39;&amp;v=1&#39;,x=function(){if(!window.open(r,&#39;douban&#39;,&#39;toolbar=0,resizable=1,scrollbars=yes,status=1,width=450,height=330&#39;))location.href=r+&#39;&amp;r=1&#39;};if(/Firefox/.test(navigator.userAgent)){setTimeout(x,0)}else{x()}})()&quot;&gt;&lt;i class=&#39;social-icon-sprite social-icon-douban&#39;&gt;&lt;/i&gt;&lt;span&gt;分享到豆瓣&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;
+              &lt;/ul&gt;" data-original-title="" title="" class="function-button"><i class="iconfont ic-share"></i></a> <!----></li></ul></div>
+</div>
+<div class="note-bottom">
+  <div><div class="main"><div class="title">被以下专题收入，发现更多相似内容</div> <!----> <div class="include-collection"><!----> <a href="http://www.jianshu.com/c/bc69a7fdfa72?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/屏幕快照_2015-07-31_上午9.09.38.png"><div class="name">Node.js</div></a><a href="http://www.jianshu.com/c/1cc5b631d02a?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/1BC791BB-A1A7-4108-94C9-357ACFA3B44C.png"><div class="name">微信小程序开发</div></a><a href="http://www.jianshu.com/c/b19f577e7748?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/124124414.jpg"><div class="name">微信小程序（应用号）</div></a><a href="http://www.jianshu.com/c/e86dea47d970?utm_source=desktop&amp;utm_medium=notes-included-collection" target="_blank" class="item"><img src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/a24bd67156d24e304662b185ed36f076.jpg"><div class="name">微信小程序</div></a> <!----></div></div> <!----> <!----></div>
+  <div><div class="recommend-note"><div class="meta"><div class="title">
+        推荐阅读
+        <a target="_blank" href="http://www.jianshu.com/" class="more">
+           更多精彩内容<i class="iconfont ic-link"></i></a></div></div> <div class="list"><div class="note"><!----> <a target="_blank" href="http://www.jianshu.com/p/22b922f2aba9?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="title">Web和App设计、切图相关教程和工具收集</a> <p class="description">标注工具 PxCook biaonimeia.com  在线标注网站，支持团队分享 Parker - 最高效的自动标注工具 切图工具 Cutterman - 好用的Photoshop切图工具 Assistor PS 相关教程 新手福利！超全面的UI设计切图规范指南 一款APP，从设计稿到切图 尺寸规范 - 优阁网 10个你可能不知道的前端PS技巧</p> <a target="_blank" href="http://www.jianshu.com/u/575d7ece6e59?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="author"><div class="avatar" style="background-image: url(&quot;http://cdn2.jianshu.io/assets/default_avatar/13-394c31a9cb492fcb39c27422ca7d2815.jpg&quot;);"></div> <span class="name">tumobi</span></a></div><div class="note have-img"><a target="_blank" href="http://www.jianshu.com/p/80e45dc95a8d?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="cover" style="background-image: url(&quot;//upload-images.jianshu.io/upload_images/3985656-c543b937ac6e79bb.png?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240&quot;);"></a> <a target="_blank" href="http://www.jianshu.com/p/80e45dc95a8d?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="title">基于Node.js+MySQL开发的开源微信小程序B2C商城（页面高仿网易严选）</a> <p class="description">高仿网易严选的微信小程序商城（微信小程序客户端） 界面高仿网易严选商城(主要是2016年wap版) 测试数据采集自网易严选商城 功能和数据库参考ecshop 服务端api基于Ｎode.js+ThinkJS+MySQL 计划添加基于Vue.js的后台管理系统、PC版、Ｗap版 GitHub: https://github.com/tumobi/nideshop-mini-program 项目截图 功能列表 首页 分类首页、分类商品、新品首发、人气推荐商品页面 商品详情页面，包含加入购物车、收藏商品、商品评论功能 搜索功能 专题功能 品牌功能 完整的购物流程，商品的加入、编辑、删除、批量选择...</p> <a target="_blank" href="http://www.jianshu.com/u/575d7ece6e59?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="author"><div class="avatar" style="background-image: url(&quot;http://cdn2.jianshu.io/assets/default_avatar/13-394c31a9cb492fcb39c27422ca7d2815.jpg&quot;);"></div> <span class="name">tumobi</span></a></div><div class="note have-img"><a target="_blank" href="http://www.jianshu.com/p/7bce96643ecf?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="cover" style="background-image: url(&quot;//upload-images.jianshu.io/upload_images/7016727-08346f30f3a9a028.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240&quot;);"></a> <a target="_blank" href="http://www.jianshu.com/p/7bce96643ecf?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="title">来简书是为了钱，挣不到也不想走</a> <p class="description">文 属马摩羯女 图片来自网络 ﻿ 1） 我来简书的原因跟大家可能不一样，并不是多热爱写作。只是因为跟老公吵架，赌气之下花99块大洋买了个写作课程。 可能99块钱对于大部分人来说都是忽略不计，但对于铁公鸡特别是现在挣不到钱的我来说，这种行为简直就是那句:现在流的眼泪是当初脑子进的水，但既然出了血那就去学学看吧。 因为每周更新一课，一开始正式的课程还未开始，所以我先进入到社区群，看到有人在群里写作打卡，就这样我发现了简书。 我属于那种很没有常识的人，一开始我以为投稿成功我就有稿费了，我也以为五个投稿机会就是随便投就可以了。当我收到投稿通过的通知时候，我以为我就这么轻而易举可以拿到稿费了，哈哈...</p> <a target="_blank" href="http://www.jianshu.com/u/8d4325568be8?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="author"><div class="avatar" style="background-image: url(&quot;http://upload.jianshu.io/users/upload_avatars/7016727/0089ad1d-debb-4344-b6ca-f1829a8ff764.jpg&quot;);"></div> <span class="name">属马摩羯女</span></a></div><div class="note"><!----> <a target="_blank" href="http://www.jianshu.com/p/1c51b2544a4d?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="title">死刑前夜，四个电话（简书对话创作征文）</a> <p class="description">“啊……” “你醒了？” “我……你是……” “感觉怎么样？” “我怎么会在这？这是哪里？”映入男人眼帘的是一个只有灰白两色的房间。 “叮叮……当……”金属碰撞声。 “啊！！”男人感到手部一阵剧痛，随即低头看，“这是……这是怎么回事！” “陈先生，您……” “快放开我！！你是谁，为什么要把我铐起来！这是哪？” “陈先生，您先不要激动……” “快放开我！！” “陈先生，您别激动，先听我说。进来之前李护士说您这两天有点反常，让我小心，但我看了您的检测报告，一切正常，所以没让人陪同。因为如果太多人在场，可能会影响我们之间的……呃……交流。我知道对于您这样的人来说，比较难以接受这一切，但事情到了...</p> <a target="_blank" href="http://www.jianshu.com/u/5a8c5a970116?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="author"><div class="avatar" style="background-image: url(&quot;http://upload.jianshu.io/users/upload_avatars/7236756/2c40e64b-02f2-41de-b8b9-0fb76261b231.png&quot;);"></div> <span class="name">月动</span></a></div><div class="note have-img"><a target="_blank" href="http://www.jianshu.com/p/1aeb4e339af4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="cover" style="background-image: url(&quot;//upload-images.jianshu.io/upload_images/1442902-ffc350d97f130e3e.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240&quot;);"></a> <a target="_blank" href="http://www.jianshu.com/p/1aeb4e339af4?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="title">那些30岁还没结婚的人，过着怎样的生活？</a> <p class="description">01 昨天夜里，我正在看阿列克谢耶维奇的书，突然收到林倩的微信。 她说：“我后悔了，那个曾口口声声说30岁娶我的男人结婚了，我现在一个人坐动车去他的城市，想见他最后一面，你陪我聊会儿吧。” 我问：“如果再给你一次机会，你还会选择这样的生活吗？” 她没有回答，不知道是不是动车进了隧道，信号不好。 02 林倩是我身边比较独特的大龄未婚女青年，大学毕业的时候，她斩钉截铁地跟前男友说，我不会跟你回老家的，因为我们暂时不可能结婚，我是要30岁才结婚的人。 那时候，林倩总觉得30岁会是她的人生巅峰。她可以通过自己的努力在职场奋斗，成为杜拉拉那样的女人，有车有房有地位，有多余的钱给父母养老。 那时候，...</p> <a target="_blank" href="http://www.jianshu.com/u/deeea9e09cbc?utm_campaign=maleskine&amp;utm_content=user&amp;utm_medium=pc_all_hots&amp;utm_source=recommendation" class="author"><div class="avatar" style="background-image: url(&quot;http://upload.jianshu.io/users/upload_avatars/1442902/b54c023e8862.jpg&quot;);"></div> <span class="name">衷曲无闻</span></a></div></div></div> <div class="sign-and-download-bind"><a href="http://www.jianshu.com/sign_in?utm_source=desktop&amp;utm_medium=note-bottom-bind" class="btn"><div class="title"><i class="iconfont ic-user"></i>
+        登录/注册
+      </div> <div class="subtitle">
+        为你个性化推荐内容
+      </div></a> <a href="http://www.jianshu.com/apps/download?utm_source=desktop&amp;utm_medium=click-note-bottom-bind" class="btn btn-popover"><div class="title"><i class="iconfont ic-qrcode"></i>
+        下载简书App
+      </div> <div class="subtitle">
+        随时随地发现和创作内容
+      </div> <div class="qr-box"><div class="qrcode"></div> <div class="arrow"></div></div></a></div></div>
+</div>
+
+    <script src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/push.js"></script><script src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/hm.js"></script><script async="" src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/analytics.js"></script><script type="application/json" data-name="page-data">{"user_signed_in":false,"locale":"zh-CN","os":"windows","read_mode":"day","read_font":"font2","note_show":{"is_author":false,"is_following_author":false,"is_liked_note":false,"uuid":"766ca117-a51e-48cf-8b13-bb9a9ad0f613"},"note":{"id":14603952,"slug":"78a0f5f424e1","user_id":3985656,"notebook_id":8258832,"commentable":true,"likes_count":12,"views_count":1552,"public_wordage":736,"comments_count":0,"total_rewards_count":0,"is_author":false,"author":{"nickname":"tumobi","total_wordage":6256,"followers_count":24,"total_likes_count":44}}}</script>
+    
+    <script src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/babel-polyfill-da7da01077566612ec77.js"></script>
+    <script src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/web-base-0ef55f79e1c2b8eee2bc.js"></script>
+<script src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/web-d4262abc23b8ceb5bda1.js"></script>
+    
+    <script src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/entry-3775714750b6fb5281ab.js"></script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-35169517-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?0c0e9d9b1e7d617b3e6842e85b9fb068";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+<script>
+  (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+  })();
+</script>
+
+  
+
+<!----><!----><div class="sogoutip" style="z-index: 2147483645; visibility: hidden; display: none;"></div><div class="sogoubottom" id="sougou_bottom" style="display: none;"></div><div id="ext_stophi" style="z-index: 2147483647;"><div class="extnoticebg"></div><div class="extnotice"><h2>关闭提示 <a href="http://www.jianshu.com/p/78a0f5f424e1#" title="关闭提示" id="closenotice" class="closenotice">关闭</a></h2><p id="sogouconfirmtxt"></p>  <a id="sogouconfirm" href="http://www.jianshu.com/p/78a0f5f424e1#" class="extconfirm">确 认</a> <a id="sogoucancel" href="http://www.jianshu.com/p/78a0f5f424e1#" class="extconfirm">取 消</a></div></div><div id="ext_overlay" class="ext_overlayBG" style="display: none; z-index: 2147483646;"></div><iframe class="sogou_sugg_feedbackquan" frameborder="0" scrolling="no" src="./通过新浪云部署Node.js微信小程序商城（不用买域名、不用备案、不用配置https） - 简书_files/yun6.html" style="border: none; display: none; height: 84px; width: 100%; z-index: 2147483645; background: transparent;"></iframe></body></html>
