@@ -13,7 +13,7 @@ export default {
       user: 'root',
       password: '123456',
       prefix: 'nideshop_',
-      encoding: 'utf8'
+      encoding: 'utf8mb4'
     },
     mongo: {
 
