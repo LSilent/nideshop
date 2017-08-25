@@ -11,7 +11,7 @@ export default {
       port: '3306',
       database: 'nideshop',
       user: 'root',
-      password: 'root',
+      password: '123456',
       prefix: 'nideshop_',
       encoding: 'utf8'
     },
