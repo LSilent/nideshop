@@ -2,7 +2,7 @@
   "apps": [{
     "name": "nideshop",
     "script": "www/production.js",
-    "cwd": "/projects/nideshop",
+    "cwd": "/var/www/nideshop",
     "exec_mode": "cluster",
     "instances": 1,
     "max_memory_restart": "256M",
