@@ -1,16 +1,16 @@
 {
   "apps": [{
-    "name": "you_thinkjs",
+    "name": "nideshop",
     "script": "www/production.js",
-    "cwd": "/home/jiaciwang/Code/tmp/you_thinkjs",
+    "cwd": "/projects/nideshop",
     "exec_mode": "cluster",
-    "instances": 0,
-    "max_memory_restart": "1G",
+    "instances": 1,
+    "max_memory_restart": "256M",
     "autorestart": true,
     "node_args": [],
     "args": [],
     "env": {
-      
+
     }
   }]
 }
