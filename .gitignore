@@ -30,8 +30,8 @@ node_modules/
 output/
 output.tar.gz
 
+runtime/
 app/
 
-runtime/
-
-package-lock.json
+config.development.js
+adapter.development.js
