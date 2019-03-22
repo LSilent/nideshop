@@ -20,21 +20,12 @@ CREATE SCHEMA `nideshop` DEFAULT CHARACTER SET utf8mb4 ;
 ```
 > 注意数据库字符编码为utf8mb4 
 + 更改数据库配置
-  src/common/config/adapter.js
+  src/common/config/database.js
   
 ```
-  /**
- * model adapter config
- * @type {Object}
- */
-exports.model = {
-  type: 'mysql',
-  common: {
-    logConnect: isDev,
-    logSql: isDev,
-    logger: msg => think.logger.info(msg)
-  },
-  mysql: {
+const mysql = require('think-model-mysql');
+
+module.exports = {
     handle: mysql,
     database: 'nideshop',
     prefix: 'nideshop_',
@@ -42,12 +33,11 @@ exports.model = {
     host: '127.0.0.1',
     port: '3306',
     user: 'root',
-    password: 'root',
+    password: '你的密码',
     dateStrings: true
-  }
 };
+```
 
-  ```
 + 填写微信登录和微信支付配置
 src/common/config/config.js
 ```
@@ -108,7 +98,7 @@ npm start
 + 会员中心（订单、收藏、足迹、收货地址、意见反馈）
 ....
 
-### 最后
-喜欢别忘了Star
-本项目长期更新完善，欢迎Watch
-交流QQ群：497145766
+### 交流
+喜欢别忘了 Star，有问题可通过微信、公众号、QQ 群联系我，谢谢您的关注。
+
+![联系方式](http://nideshop-static.nideshop.com/nideshop-qrcode.png)

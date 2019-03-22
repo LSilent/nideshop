@@ -41,7 +41,7 @@ module.exports = class extends Base {
     if (!think.isEmpty(hotComment)) {
       const commentUser = await this.model('user').field(['nickname', 'username', 'avatar']).where({id: hotComment.user_id}).find();
       commentInfo = {
-        content: new Buffer(hotComment.content, 'base64').toString(),
+        content: Buffer.from(hotComment.content, 'base64').toString(),
         add_time: think.datetime(new Date(hotComment.add_time * 1000)),
         nickname: commentUser.nickname,
         avatar: commentUser.avatar,
@@ -55,10 +55,10 @@ module.exports = class extends Base {
     };
 
     // 当前用户是否收藏
-    const userHasCollect = await this.model('collect').isUserHasCollect(think.userId, 0, goodsId);
+    const userHasCollect = await this.model('collect').isUserHasCollect(this.getLoginUserId(), 0, goodsId);
 
     // 记录用户的足迹 TODO
-    await await this.model('footprint').addFootprint(think.userId, goodsId);
+    await await this.model('footprint').addFootprint(this.getLoginUserId(), goodsId);
 
     // return this.json(jsonData);
     return this.success({
@@ -122,7 +122,7 @@ module.exports = class extends Base {
       // 添加到搜索历史
       await this.model('search_history').add({
         keyword: keyword,
-        user_id: think.userId,
+        user_id: this.getLoginUserId(),
         add_time: parseInt(new Date().getTime() / 1000)
       });
     }
